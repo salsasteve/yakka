@@ -7,10 +7,11 @@ import { Ethplorer } from './ethplorer.service';
 export class EthplorerController {
   constructor(private readonly ethplorer: Ethplorer) {}
 
-  @Get('topTokenHolders/:tokenId')
+  @Get('topTokenHolders/:tokenId/:limit')
   getTopTokenHolders(
     @Param('tokenId') tokenId: string,
+    @Param('limit') limit: number,
   ): Observable<AxiosResponse<unknown>> {
-    return this.ethplorer.getTopTokenHolders(tokenId);
+    return this.ethplorer.getTopTokenHolders(tokenId, limit);
   }
 }

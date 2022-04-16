@@ -8,9 +8,12 @@ export class Ethplorer {
   constructor(private httpService: HttpService) {}
   readonly ethplorerUrl = 'https://api.ethplorer.io';
 
-  getTopTokenHolders(tokenId: string): Observable<AxiosResponse<unknown>> {
+  getTopTokenHolders(
+    tokenId: string,
+    limit: number,
+  ): Observable<AxiosResponse<unknown>> {
     const config = {
-      params: { apiKey: process.env.ETHPLORER_API_KEY, limit: 100 },
+      params: { apiKey: process.env.ETHPLORER_API_KEY, limit: limit },
     };
 
     const url = this.ethplorerUrl + '/getTopTokenHolders/' + tokenId;
