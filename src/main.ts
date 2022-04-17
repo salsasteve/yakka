@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { YakkaBot } from './yakkabot.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(YakkaBot, { cors: true });
+  const app = await NestFactory.create(YakkaBot);
   app.enableCors({
     origin: [
       'http://localhost:4000',
