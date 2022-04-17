@@ -13,6 +13,7 @@ async function bootstrap() {
       'https://www.orca.watch',
     ],
     methods: ['GET', 'POST'],
+    allowedHeaders: ['Content-Type', 'Accept', 'Origin'],
     credentials: true,
   });
   await app.listen(3000);
