@@ -7,4 +7,6 @@
 
 
 
-http://localhost:3000/token-metrics/tokensNew
+# http://localhost:3000/token-metrics/tokensNew
+
+http://localhost:3000/token-metrics/addressInfo/0x8797385d3b72c34d6d3c4cdddd149fccd357a7de/0xaa6e8127831c9de45ae56bb1b0d4d4da6e5665bd/true

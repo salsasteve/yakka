@@ -19,4 +19,12 @@ export class EthplorerController {
   getTokensNew(): Observable<AxiosResponse<unknown>> {
     return this.ethplorer.getTokensNew();
   }
+
+  @Get('addressInfo/:address/:contractAddress?')
+  getAddressInfo(
+    @Param('address') address: string,
+    @Param('contractAddress') contractAddress: string,
+  ): Observable<AxiosResponse<unknown>> {
+    return this.ethplorer.getAddressInfo(address, contractAddress);
+  }
 }

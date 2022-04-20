@@ -34,4 +34,23 @@ export class Ethplorer {
       .get(url, config)
       .pipe(map((response) => response.data));
   }
+
+  getAddressInfo(
+    address: string,
+    contractAddress: string,
+  ): Observable<AxiosResponse<unknown>> {
+    const config = {
+      params: {
+        apiKey: process.env.ETHPLORER_API_KEY,
+        token: contractAddress,
+        showETHTotals: 'true',
+      },
+    };
+
+    const url = this.ethplorerUrl + '/getAddressInfo/' + address;
+
+    return this.httpService
+      .get(url, config)
+      .pipe(map((response) => response.data));
+  }
 }
