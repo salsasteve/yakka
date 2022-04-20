@@ -22,4 +22,16 @@ export class Ethplorer {
       .get(url, config)
       .pipe(map((response) => response.data));
   }
+
+  getTokensNew(): Observable<AxiosResponse<unknown>> {
+    const config = {
+      params: { apiKey: process.env.ETHPLORER_API_KEY },
+    };
+
+    const url = this.ethplorerUrl + '/getTokensNew';
+
+    return this.httpService
+      .get(url, config)
+      .pipe(map((response) => response.data));
+  }
 }

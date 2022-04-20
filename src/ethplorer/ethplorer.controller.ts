@@ -14,4 +14,9 @@ export class EthplorerController {
   ): Observable<AxiosResponse<unknown>> {
     return this.ethplorer.getTopTokenHolders(tokenId, limit);
   }
+
+  @Get('tokensNew')
+  getTokensNew(): Observable<AxiosResponse<unknown>> {
+    return this.ethplorer.getTokensNew();
+  }
 }
