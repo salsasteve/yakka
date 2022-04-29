@@ -21,6 +21,7 @@ export class HelperService {
       return MAValidator.validate(address, token);
     } catch (error) {
       catchError(error);
+      console.log('Token/Chain may not be supported');
     }
   }
 }
