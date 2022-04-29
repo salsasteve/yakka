@@ -2,26 +2,25 @@ import { Injectable } from '@nestjs/common';
 import { catchError } from 'rxjs';
 import { cryptoList } from './constants/cryptoList.json';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const WAValidator = require('multicoin-address-validator');
+const MAValidator = require('multicoin-address-validator');
 
 @Injectable()
 export class HelperService {
-  validToken: Array<string> = [];
-  isAddressValid(address: string) {
+  isAddressValid(address: string): string {
+    const validTokens: string[] = [];
     cryptoList.forEach((token) => {
-      const valid = WAValidator.validate(address, token);
+      const valid = MAValidator.validate(address, token);
 
-      if (valid) this.validToken.push(token);
+      if (valid) validTokens.push(token);
     });
-    return this.validToken.toString();
+    return JSON.stringify({ validTokens });
   }
 
-  isAddressValidOn(address: string, token: string) {
+  isAddressValidOn(address: string, token: string): boolean {
     try {
-      return WAValidator.validate(address, token);
+      return MAValidator.validate(address, token);
     } catch (error) {
       catchError(error);
-      return 'Token/Chain is not supported';
     }
   }
 }
